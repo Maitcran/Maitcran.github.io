@@ -1,11 +1,7 @@
-
 -- dbms-sqltune-sqlid.sql
--- Jared Still jkstill@gmail.com 
---
 -- create a SQL tuning job, execute it, and run the report
 -- rather straightforward.
 -- this script is just a convenience to save some time
--- 
 -- exits with error if an invalid sql_id is sent
 
 @clears
