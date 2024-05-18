@@ -1,9 +1,140 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Mi primera página web</title>
+<title>Consultas Oracle SQL</title>
+<style>
+body {
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+.menu {
+    width: 300px;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.menu a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.consulta {
+    margin-bottom: 20px;
+}
+
+.consulta h2 {
+    margin-top: 0;
+}
+
+pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    overflow-x: auto; /* Para barras de desplazamiento horizontal si es necesario */
+}
+</style>
 </head>
 <body>
-<h1>Hola mundo!</h1>
-</body>
-</html>
+<div class="container">
+    <div class="menu">
+        <a href="#consulta1">Consulta Oracle SQL sobre la vista que muestra el estado de la base de datos</a>
+        <a href="#consulta2">Consulta Oracle SQL que muestra si la base de datos está abierta</a>
+        <a href="#consulta3">Consulta Oracle SQL sobre la vista que muestra los parámetros generales de Oracle</a>
+        <a href="#consulta4">Consulta Oracle SQL para conocer la Versión de Oracle</a>
+        <a href="#consulta5">Consulta Oracle SQL para conocer la Ubicación y nombre del fichero spfile</a>
+        <a href="#consulta6">Consulta Oracle SQL para conocer la Ubicación y número de ficheros de control</a>
+        <a href="#consulta7">Consulta Oracle SQL para conocer el Nombre de la base de datos</a>
+        <a href="#consulta8">Consulta Oracle SQL sobre la vista que muestra las conexiones actuales a Oracle</a>
+        <a href="#consulta9">Consulta Oracle SQL que muestra el número de conexiones actuales a Oracle agrupado por aplicación que realiza la conexión</a>
+        <a href="#consulta10">Consulta Oracle SQL que muestra los usuarios de Oracle conectados y el número de sesiones por usuario</a>
+        <a href="#consulta11">Consulta Oracle SQL que muestra propietarios de objetos y número de objetos por propietario</a>
+        <a href="#consulta12">Consulta Oracle SQL sobre el Diccionario de datos (incluye todas las vistas y tablas de la Base de Datos)</a>
+        <a href="#consulta13">Consulta Oracle SQL que muestra los datos de una tabla especificada</a>
+        <a href="#consulta14">Consulta Oracle SQL que muestra las descripciones de los campos de una tabla especificada</a>
+        <a href="#consulta15">Consulta Oracle SQL para conocer las tablas propiedad del usuario actual</a>
+        <a href="#consulta16">Consulta Oracle SQL para conocer todos los objetos propiedad del usuario conectado a Oracle</a>
+        <a href="#consulta17">Consulta Oracle SQL para el DBA de Oracle que muestra los tablespaces, el espacio utilizado, el espacio libre y los ficheros de datos de los mismos</a>
+        <a href="#consulta18">Consulta Oracle SQL para conocer los productos Oracle instalados y la versión</a>
+        <a href="#consulta19">Consulta Oracle SQL para conocer los roles y privilegios por roles</a>
+        <a href="#consulta20">Consulta Oracle SQL para conocer las reglas de integridad y columna a la que afectan</a>
+        <a href="#consulta21">Consulta Oracle SQL para conocer las tablas de las que es propietario un usuario, en este caso "xxx"</a>
+        <a href="#consulta22">Consulta Oracle SQL como la anterior, pero de otra forma más efectiva (tablas de las que es propietario un usuario)</a>
+        <a href="#consulta23">Parámetros de Oracle, valor actual y su descripción</a>
+        <a href="#consulta24">Consulta Oracle SQL que muestra los usuarios de Oracle y datos suyos (fecha de creación, estado, id, nombre, tablespace temporal,...)</a>
+        <a href="#consulta25">Consulta Oracle SQL para conocer tablespaces y propietarios de los mismos</a>
+        <a href="#consulta26">Últimas consultas SQL ejecutadas en Oracle y usuario que las ejecutó</a>
+        <a href="#consulta27">Consulta Oracle SQL para conocer todos los tablespaces</a>
+        <a href="#consulta28">Consulta Oracle SQL para conocer la memoria Share_Pool libre y usada</a>
+        <a href="#consulta29">Cursores abiertos por usuario</a>
+        <a href="#consulta30">Consulta Oracle SQL para conocer los aciertos de la caché (no debería superar el 1 por ciento)</a>
+        <a href="#consulta31">Sentencias SQL completas ejecutadas con un texto determinado en el SQL</a>
+        <a href="#consulta32">Una sentencia SQL concreta (filtrado por sid)</a>
+        <a href="#consulta33">Consulta Oracle SQL para conocer el tamaño ocupado por la base de datos</a>
+        <a href="#consulta34">Consulta Oracle SQL para conocer el tamaño de los ficheros de datos de la base de datos</a>
+        <a href="#consulta35">Consulta Oracle SQL para conocer el tamaño ocupado por una tabla concreta sin incluir los índices de la misma</a>
+        <a href="#consulta36">Consulta Oracle SQL para conocer el tamaño ocupado por una tabla concreta incluyendo los índices de la misma</a>
+        <a href="#consulta37">Consulta Oracle SQL para conocer el tamaño ocupado por una columna de una tabla</a>
+        <a href="#consulta38">Consulta Oracle SQL para conocer el espacio ocupado por usuario</a>
+        <a href="#consulta39">Consulta Oracle SQL para conocer el espacio ocupado por los diferentes segmentos (tablas, índices, undo, rollback, cluster, ...)</a>
+        <a href="#consulta40">Consulta Oracle SQL para obtener todas las funciones de Oracle: NVL, ABS, LTRIM, ...</a>
+        <a href="#consulta41">Consulta Oracle SQL para conocer el espacio ocupado por todos los objetos de la base de datos, muestra los objetos que más ocupan primero</a>
+    </div>
+    <div class="content">
+        <div class="consulta" id="consulta1">
+            <h2>Consulta Oracle SQL sobre la vista que muestra el estado de la base de datos</h2>
+            <pre>select * from v$instance</pre>
+        </div>
+        <div class="consulta" id="consulta2">
+            <h2>Consulta Oracle SQL que muestra si la base de datos está abierta</h2>
+            <pre>select status from v$instance</pre>
+        </div>
+        <div class="consulta" id="consulta3">
+            <h2>Consulta Oracle SQL sobre la vista que muestra los parámetros generales de Oracle</h2>
+            <pre>select * from v$system_parameter</pre>
+        </div>
+        <div class="consulta" id="consulta4">
+            <h2>Consulta Oracle SQL para conocer la Versión de Oracle</h2>
+            <pre>select value from v$system_parameter where name = 'compatible'</pre>
+        </div>
+        <div class="consulta" id="consulta5">
+            <h2>Consulta Oracle SQL para conocer la Ubicación y nombre del fichero spfile</h2>
+            <pre>select value from v$system_parameter where name = 'spfile'</pre>
+        </div>
+        <div class="consulta" id="consulta6">
+            <h2>Consulta Oracle SQL para conocer la Ubicación y número de ficheros de control</h2>
+            <pre>select value from v$system_parameter where name = 'control_files'</pre>
+        </div>
+        <div class="consulta" id="consulta7">
+            <h2>Consulta Oracle SQL para conocer el Nombre de la base de datos</h2>
+            <pre>select value from v$system_parameter where name = 'db_name'</pre>
+        </div>
+        <div class="consulta" id="consulta8">
+            <h2>Consulta Oracle SQL sobre la vista que muestra las conexiones actuales a Oracle</h2>
+            <pre>select osuser, username, machine, program
+from v$session
+order by osuser</pre>
+        </div>
+        <div class="consulta" id="consulta9">
+            <h2>Consulta Oracle SQL que muestra el número de conexiones actuales a Oracle agrupado por aplicación que realiza la conexión</h2>
+            <pre>select program Aplicacion, count(program) Numero_Sesiones
+from v$session
+group by program
+order by Numero_Sesiones desc</pre>
+        </div>
+        <div class="consulta" id="consulta10">
+            <h2>Consulta Oracle SQL que muestra los usuarios de Oracle conectados y el número de sesiones por usuario</h2>
+            <pre>select username Usuario_Oracle, count(username) Numero_Sesiones
+from v$session
+group by username
+order by Numero_Sesiones desc</pre>
+        </div>
